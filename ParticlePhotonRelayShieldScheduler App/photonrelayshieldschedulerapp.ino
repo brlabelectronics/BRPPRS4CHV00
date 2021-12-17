@@ -42,10 +42,10 @@ WidgetTerminal terminal(V5);
 
 bool isFirstConnect = true;
 // constant integer assignment
-const int relay1 = 4;
-const int relay2 = 5;
-const int relay3 = 6;
-const int relay4 = 7;
+const int relay1 = 7;
+const int relay2 = 6;
+const int relay3 = 5;
+const int relay4 = 4;
 
 // integer variable assignments
 int alldays;
