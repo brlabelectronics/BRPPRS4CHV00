@@ -897,16 +897,6 @@ BLYNK_WRITE(V17) // relay2 selected?
     relay4selected = 0;
   }
 }
-void batteryV(){ // get battery SoC 
-  // custom battery function
-    double voltage = analogRead(BATT)*0.0011224;
-    //String BV = String(voltage,2) + String("V");
-    //Particle.publish("Battery Voltage", BV, PRIVATE);
-    int SoC = map(voltage, 3.20, 4.12, 0.00, 100.00);
-    //String displaySoC = String("      Battery: ") + String(SoC) + String("%");
-    //Blynk.setProperty(V5, "label", displaySoC);
-    Blynk.virtualWrite(V4, SoC);
-}
 void currentTime(){ // get current time
   
   int timezoneoffset = -6;
@@ -1005,15 +995,7 @@ void wifistrength(){
 void terminalproperty(){
  WiFiSignal sig = WiFi.RSSI();
  float strength = sig.getStrength();
- double voltage;
- double avgvoltage;
- for(int i = 0; i <= 49; i++)
- {
-  voltage = voltage + analogRead(BATT)*0.0011224; 
- }
- avgvoltage = voltage*0.02;
- int SoC = map(avgvoltage, 3.20, 4.20, 0.00, 100.00); 
- String terminalLabel = String("                        WiFi Strength: ") + String(strength,0) + String("%                      Battery SoC: ") + String(SoC) + String("%");
+ String terminalLabel = String("                        WiFi Strength: ") + String(strength,0);
  Blynk.setProperty(V5, "label", terminalLabel);
 }
 void setup() { // setup code runs once first
@@ -1029,7 +1011,7 @@ void setup() { // setup code runs once first
   terminal.clear();
   // This will print Blynk Software version to the Terminal Widget when
   // your hardware gets connected to Blynk Server
-  terminal.println(F("Relay Shield Argon"));
+  terminal.println(F("WiFi Power Brick"));
   terminal.println(F("Blynk v" BLYNK_VERSION ": Device has Booted"));
   currentTime();
   currentDay();
@@ -1038,7 +1020,6 @@ void setup() { // setup code runs once first
   terminal.flush();
   timer.setInterval(10000L, activetoday);  // check every 10 SECONDS if schedule should run today 
   timer.setInterval(10000L, wifistrength); // get the wifi strength every 10 seconds
-  timer.setInterval(10000L, batteryV);
   timer.setInterval(60000L, currentTime);
   timer.setInterval(3600000L, currentDay);
   timer.setInterval(10000L, terminalproperty); 
