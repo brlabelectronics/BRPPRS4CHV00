@@ -1015,7 +1015,6 @@ void setup() { // setup code runs once first
   terminal.println(F("Blynk v" BLYNK_VERSION ": Device has Booted"));
   currentTime();
   currentDay();
-  batteryV();
   terminalproperty();
   terminal.flush();
   timer.setInterval(10000L, activetoday);  // check every 10 SECONDS if schedule should run today 
