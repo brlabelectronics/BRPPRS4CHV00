@@ -995,7 +995,7 @@ void wifistrength(){
 void terminalproperty(){
  WiFiSignal sig = WiFi.RSSI();
  float strength = sig.getStrength();
- String terminalLabel = String("                        WiFi Strength: ") + String(strength,0);
+ String terminalLabel = String("WiFi Strength: ") + String(strength,0) + String("%");
  Blynk.setProperty(V5, "label", terminalLabel);
 }
 void setup() { // setup code runs once first
