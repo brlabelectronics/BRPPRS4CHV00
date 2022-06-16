@@ -194,6 +194,9 @@ BLYNK_WRITE(V6) // ALL DAYS Schedule Selected
   { 
     alldays = 0;
     digitalWrite(relay1, LOW); 
+    digitalWrite(relay2, LOW);
+    digitalWrite(relay3, LOW);
+    digitalWrite(relay4, LOW);
   }
 }
 BLYNK_WRITE(V7) // WEEKDAYS Schedule Selected
@@ -205,9 +208,9 @@ BLYNK_WRITE(V7) // WEEKDAYS Schedule Selected
     weekend = 0;
     custom = 0;
     Blynk.syncVirtual(V11);
-    terminal.clear()
-    ;terminal.println("WEEKDAYS SCHEDULE HAS BEEN ACTIVATIED AT:");
-    currentTime();
+    terminal.clear();
+    terminal.println("WEEKDAYS SCHEDULE HAS BEEN ACTIVATIED AT:");
+    //currentTime();
     terminal.flush();
     currentDay();
   }
@@ -226,9 +229,9 @@ BLYNK_WRITE(V8) // WEEKEND Schedule Selected
     weekend = 1;
     custom = 0;
     Blynk.syncVirtual(V12);
-    terminal.clear()
-    ;terminal.println("WEEKEND SCHEDULE HAS BEEN ACTIVATIED AT:");
-    currentTime();
+    terminal.clear();
+    terminal.println("WEEKEND SCHEDULE HAS BEEN ACTIVATIED AT:");
+    //currentTime();
     terminal.flush();
     currentDay();
   }
@@ -247,9 +250,9 @@ BLYNK_WRITE(V9) // CUSTOM Schedule Selected
     weekend = 0;
     custom = 1;
     Blynk.syncVirtual(V13);
-    terminal.clear()
-    ;terminal.println("CUSTOM SCHEDULE HAS BEEN ACTIVATIED AT:");
-    currentTime();
+    terminal.clear();
+    terminal.println("CUSTOM SCHEDULE HAS BEEN ACTIVATIED AT:");
+    //currentTime();
     terminal.flush();
     currentDay();
   }
@@ -1007,6 +1010,7 @@ BLYNK_WRITE(V14) // relay1 selected?
   {
     // execute this code if the switch widget is now OFF
     relay1selected = 0;
+    digitalWrite(relay1, LOW);
   }
 }
 BLYNK_WRITE(V15) // relay2 selected? 
@@ -1020,9 +1024,10 @@ BLYNK_WRITE(V15) // relay2 selected?
   {
     // execute this code if the switch widget is now OFF
     relay2selected = 0;
+    digitalWrite(relay2, LOW);
   }
 }
-BLYNK_WRITE(V16) // relay2 selected? 
+BLYNK_WRITE(V16) // relay3 selected? 
 {
   if(param.asInt() == 1)
   {
@@ -1033,9 +1038,10 @@ BLYNK_WRITE(V16) // relay2 selected?
   {
     // execute this code if the switch widget is now OFF
     relay3selected = 0;
+    digitalWrite(relay3, LOW);
   }
 }
-BLYNK_WRITE(V17) // relay2 selected? 
+BLYNK_WRITE(V17) // relay3 selected? 
 {
   if(param.asInt() == 1)
   {
@@ -1046,6 +1052,7 @@ BLYNK_WRITE(V17) // relay2 selected?
   {
     // execute this code if the switch widget is now OFF
     relay4selected = 0;
+    digitalWrite(relay4, LOW);
   }
 }
 void currentTime(){ // get current time
