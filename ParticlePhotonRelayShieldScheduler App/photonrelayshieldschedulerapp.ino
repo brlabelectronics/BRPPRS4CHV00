@@ -274,7 +274,7 @@ BLYNK_WRITE(V10) { // ALL DAYS schedule
     { 
       terminal.println("ALL DAYS SCHEDULE IS ACTIVE TODAY");
       terminal.flush();
-      if (t.hasStartTime()) // Process start time if a start time is avaialbe on the selected day
+      /*if (t.hasStartTime()) // Process start time if a start time is avaialbe on the selected day
       {
         String startTime = String("START TIME: ") + String(t.getStartHour()) + ":" + String(t.getStartMinute());
         terminal.println(startTime);
@@ -327,7 +327,7 @@ BLYNK_WRITE(V10) { // ALL DAYS schedule
             break;
           }
         }
-      } 
+      } */
       nowseconds = ((Time.hour() * 3600) + (Time.minute() * 60) + Time.second()); // calcualted the current time in seconds
       startsecondswd = (t.getStartHour() * 3600) + (t.getStartMinute() * 60); // calculate the selected start time in seconds
       //Serial.println(startsecondswd);  // used for debugging
@@ -368,6 +368,8 @@ BLYNK_WRITE(V10) { // ALL DAYS schedule
       else
       {
         terminal.println("ALL DAYS DEVICE NOT STARTED TODAY");
+        terminal.flush();
+        currentTime();
         terminal.flush();
       }
       stopsecondswd = (t.getStopHour() * 3600) + (t.getStopMinute() * 60);
@@ -427,6 +429,8 @@ BLYNK_WRITE(V10) { // ALL DAYS schedule
           terminal.flush();
           terminal.println("ALL DAY DEVICE IS ON");
           terminal.flush();
+          currentTime();
+          terminal.flush();
  
         }           
       }
@@ -434,6 +438,8 @@ BLYNK_WRITE(V10) { // ALL DAYS schedule
     else
     {
       terminal.println("ALL DAYS INACTIVE TODAY");
+      terminal.flush();
+      currentTime();
       terminal.flush();
       // nothing to do today, check again in 30 SECONDS time    
     }
@@ -454,7 +460,7 @@ BLYNK_WRITE(V11) { // WEEKDAYS schedule
     { //Time library starts week on Sunday, Blynk on Monday
       terminal.println("WEEKDAYS SCHEDULE IS ACTIVE TODAY");
       terminal.flush();
-    if (t.hasStartTime()) // Process start time
+    /*if (t.hasStartTime()) // Process start time
     {
       String startTime = String("START TIME: ") + String(t.getStartHour()) + ":" + String(t.getStartMinute());
       terminal.println(startTime);
@@ -507,7 +513,7 @@ BLYNK_WRITE(V11) { // WEEKDAYS schedule
           break;
         }
       }
-    } 
+    } */
       nowseconds = ((Time.hour() * 3600) + (Time.minute() * 60) + Time.second());
       startsecondswd = (t.getStartHour() * 3600) + (t.getStartMinute() * 60);
       //Serial.println(startsecondswd);  // used for debugging
@@ -548,6 +554,8 @@ BLYNK_WRITE(V11) { // WEEKDAYS schedule
       else
       {
         terminal.println("WEEKDAYS DEVICE NOT STARTED TODAY"); // print to the user that the device has not started today
+        terminal.flush();
+        currentTime();
         terminal.flush();
       }
       stopsecondswd = (t.getStopHour() * 3600) + (t.getStopMinute() * 60);
@@ -606,12 +614,16 @@ BLYNK_WRITE(V11) { // WEEKDAYS schedule
           terminal.flush();
           terminal.println("WEEKDAYS DEVICE IS ON");
           terminal.flush();
+          currentTime();
+          terminal.flush();
         }           
       }
     }
     else
     {
       terminal.println("WEEKDAYS DEVICE INACTIVE TODAY");
+      terminal.flush();
+      currentTime();
       terminal.flush();
       // nothing to do today, check again in 30 SECONDS time    
     }
@@ -632,7 +644,7 @@ BLYNK_WRITE(V12) { // WEEKEND schedule
     { //Time library starts week on Sunday, Blynk on Monday
       terminal.println("WEEKEND SCHEDULE IS ACTIVE TODAY");
       terminal.flush();
-    if (t.hasStartTime()) // Process start time
+    /*if (t.hasStartTime()) // Process start time
     {
       String startTime = String("START TIME: ") + String(t.getStartHour()) + ":" + String(t.getStartMinute());
       terminal.println(startTime);
@@ -685,7 +697,7 @@ BLYNK_WRITE(V12) { // WEEKEND schedule
           break;
         }
       }
-    } 
+    } */
       nowseconds = ((Time.hour() * 3600) + (Time.minute() * 60) + Time.second());
       startsecondswd = (t.getStartHour() * 3600) + (t.getStartMinute() * 60);
       //Serial.println(startsecondswd);  // used for debugging
@@ -784,12 +796,16 @@ BLYNK_WRITE(V12) { // WEEKEND schedule
           terminal.flush();
           terminal.println("WEEKEND DEVICE IS ON");
           terminal.flush();
+          currentTime();
+          terminal.flush();
         }           
       }
     }
     else
     {
       terminal.println("WEEKEND DEVICE INACTIVE TODAY");
+      terminal.flush();
+      currentTime();
       terminal.flush();
       // nothing to do today, check again in 30 SECONDS time    
     }
@@ -810,7 +826,7 @@ BLYNK_WRITE(V13) { // CUSTOM schedule
     { //Time library starts week on Sunday, Blynk on Monday
       terminal.println("CUSTOM SCHEDULE IS ACTIVE TODAY");
       terminal.flush();
-    if (t.hasStartTime()) // Process start time
+    /*if (t.hasStartTime()) // Process start time
     {
       String startTime = String("START TIME: ") + String(t.getStartHour()) + ":" + String(t.getStartMinute());
       terminal.println(startTime);
@@ -863,7 +879,7 @@ BLYNK_WRITE(V13) { // CUSTOM schedule
           break;
         }
       }
-    } 
+    } */
       nowseconds = ((Time.hour() * 3600) + (Time.minute() * 60) + Time.second());
       startsecondswd = (t.getStartHour() * 3600) + (t.getStartMinute() * 60);
       //Serial.println(startsecondswd);  // used for debugging
@@ -904,6 +920,8 @@ BLYNK_WRITE(V13) { // CUSTOM schedule
       else
       {
         terminal.println("CUSTOM DEVICE NOT STARTED TODAY"); // print to the user that the device has not started today
+        terminal.flush();
+        currentTime();
         terminal.flush();
       }
       stopsecondswd = (t.getStopHour() * 3600) + (t.getStopMinute() * 60);
@@ -962,12 +980,16 @@ BLYNK_WRITE(V13) { // CUSTOM schedule
           terminal.flush();
           terminal.println("CUSTOM DEVICE IS ON");
           terminal.flush();
+          currentTime();
+          terminal.flush();
         }           
       }
     }
     else
     {
       terminal.println("CUSTOM DEVICE INACTIVE TODAY");
+      terminal.flush();
+      currentTime();
       terminal.flush();
       // nothing to do today, check again in 30 SECONDS time    
     }
