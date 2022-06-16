@@ -186,7 +186,7 @@ BLYNK_WRITE(V6) // ALL DAYS Schedule Selected
     Blynk.syncVirtual(V10);
     terminal.clear();
     terminal.println("ALL DAYS SCHEDULE HAS BEEN ACTIVATIED AT:");
-    currentTime();
+    //currentTime();
     terminal.flush();
     currentDay();
   }
@@ -405,26 +405,26 @@ BLYNK_WRITE(V10) { // ALL DAYS schedule
       {
         if(nowseconds >= startsecondswd)
         {  
-          // code here to switch the relay OFF
+          // put code here to run relays
           if(relay1selected == 1)
           {
-           digitalWrite(relay1, LOW);
-           terminal.println("RELAY1 TURNED OFF");
+           digitalWrite(relay1, HIGH);
+           terminal.println("RELAY1 TURNED ON"); 
           }
           if(relay2selected == 1)
           {
-           digitalWrite(relay2, LOW);
-           terminal.println("RELAY2 TURNED OFF");
+           digitalWrite(relay2, HIGH);
+           terminal.println("RELAY2 TURNED ON"); 
           }
-          if(relay3selected == 1)
+           if(relay3selected == 1)
           {
-           digitalWrite(relay3, LOW);
-           terminal.println("RELAY3 TURNED OFF");
+           digitalWrite(relay3, HIGH);
+           terminal.println("RELAY3 TURNED ON"); 
           }
           if(relay4selected == 1)
           {
-           digitalWrite(relay4, LOW);
-           terminal.println("RELAY4 TURNED OFF");
+           digitalWrite(relay4, HIGH);
+           terminal.println("RELAY4 TURNED ON"); 
           }
           terminal.flush();
           terminal.println("ALL DAY DEVICE IS ON");
@@ -590,26 +590,26 @@ BLYNK_WRITE(V11) { // WEEKDAYS schedule
       {
         if(nowseconds >= startsecondswd)
         {  
-          // code here to switch the relay OFF
+          // put code here to run relays
           if(relay1selected == 1)
           {
-           digitalWrite(relay1, LOW);
-           terminal.println("RELAY1 TURNED OFF");
+           digitalWrite(relay1, HIGH);
+           terminal.println("RELAY1 TURNED ON"); 
           }
           if(relay2selected == 1)
           {
-           digitalWrite(relay2, LOW);
-           terminal.println("RELAY2 TURNED OFF");
+           digitalWrite(relay2, HIGH);
+           terminal.println("RELAY2 TURNED ON"); 
           }
-          if(relay3selected == 1)
+           if(relay3selected == 1)
           {
-           digitalWrite(relay3, LOW);
-           terminal.println("RELAY3 TURNED OFF");
+           digitalWrite(relay3, HIGH);
+           terminal.println("RELAY3 TURNED ON"); 
           }
           if(relay4selected == 1)
           {
-           digitalWrite(relay4, LOW);
-           terminal.println("RELAY4 TURNED OFF");
+           digitalWrite(relay4, HIGH);
+           terminal.println("RELAY4 TURNED ON"); 
           }
           terminal.flush();
           terminal.println("WEEKDAYS DEVICE IS ON");
@@ -772,26 +772,26 @@ BLYNK_WRITE(V12) { // WEEKEND schedule
       {
         if(nowseconds >= startsecondswd)
         {  
-          // code here to switch the relay OFF
+          // put code here to run relays
           if(relay1selected == 1)
           {
-           digitalWrite(relay1, LOW);
-           terminal.println("RELAY1 TURNED OFF");
+           digitalWrite(relay1, HIGH);
+           terminal.println("RELAY1 TURNED ON"); 
           }
           if(relay2selected == 1)
           {
-           digitalWrite(relay2, LOW);
-           terminal.println("RELAY2 TURNED OFF");
+           digitalWrite(relay2, HIGH);
+           terminal.println("RELAY2 TURNED ON"); 
           }
-          if(relay3selected == 1)
+           if(relay3selected == 1)
           {
-           digitalWrite(relay3, LOW);
-           terminal.println("RELAY3 TURNED OFF");
+           digitalWrite(relay3, HIGH);
+           terminal.println("RELAY3 TURNED ON"); 
           }
           if(relay4selected == 1)
           {
-           digitalWrite(relay4, LOW);
-           terminal.println("RELAY4 TURNED OFF");
+           digitalWrite(relay4, HIGH);
+           terminal.println("RELAY4 TURNED ON"); 
           }
           terminal.flush();
           terminal.println("WEEKEND DEVICE IS ON");
@@ -956,26 +956,26 @@ BLYNK_WRITE(V13) { // CUSTOM schedule
       {
         if(nowseconds >= startsecondswd)
         {  
-          // code here to switch the relay OFF
+          // put code here to run relays
           if(relay1selected == 1)
           {
-           digitalWrite(relay1, LOW);
-           terminal.println("RELAY1 TURNED OFF");
+           digitalWrite(relay1, HIGH);
+           terminal.println("RELAY1 TURNED ON"); 
           }
           if(relay2selected == 1)
           {
-           digitalWrite(relay2, LOW);
-           terminal.println("RELAY2 TURNED OFF");
+           digitalWrite(relay2, HIGH);
+           terminal.println("RELAY2 TURNED ON"); 
           }
-          if(relay3selected == 1)
+           if(relay3selected == 1)
           {
-           digitalWrite(relay3, LOW);
-           terminal.println("RELAY3 TURNED OFF");
+           digitalWrite(relay3, HIGH);
+           terminal.println("RELAY3 TURNED ON"); 
           }
           if(relay4selected == 1)
           {
-           digitalWrite(relay4, LOW);
-           terminal.println("RELAY4 TURNED OFF");
+           digitalWrite(relay4, HIGH);
+           terminal.println("RELAY4 TURNED ON"); 
           }
           terminal.flush();
           terminal.println("CUSTOM DEVICE IS ON");
