@@ -81,7 +81,7 @@ void setup() { // setup code runs once first
   if (offset==1){
     Time.beginDST();
   }
-  else(){
+  else{
     Time.endDST();
   }
   delay(5000); // Allow board to settle
