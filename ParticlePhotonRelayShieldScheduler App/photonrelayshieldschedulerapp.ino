@@ -70,6 +70,48 @@ long nowseconds;
 
 BlynkTimer timer;
 
+void setup() { // setup code runs once first
+ // Debug console
+  Serial.begin(115200);
+  pinMode(relay1, OUTPUT);
+  pinMode(relay2, OUTPUT);
+  pinMode(relay3, OUTPUT);  
+  pinMode(relay4, OUTPUT);
+   float offset = Time.getDSTOffset();
+  if (offset==1){
+    Time.beginDST();
+  }
+  else(){
+    Time.endDST();
+  }
+  delay(5000); // Allow board to settle
+  Blynk.begin(auth);
+  // Clear the terminal content
+  terminal.clear();
+  // This will print Blynk Software version to the Terminal Widget when
+  // your hardware gets connected to Blynk Server
+  terminal.println(F("WiFi Power Brick"));
+  terminal.println(F("Blynk v" BLYNK_VERSION ": Device has Booted"));
+  currentTime();
+  currentDay();
+  terminalproperty();
+  terminal.flush();
+  timer.setInterval(10000L, activetoday);  // check every 10 SECONDS if schedule should run today 
+  timer.setInterval(10000L, wifistrength); // get the wifi strength every 10 seconds
+  timer.setInterval(60000L, currentTime);
+  timer.setInterval(3600000L, currentDay);
+  timer.setInterval(10000L, terminalproperty); 
+ 
+
+}
+void loop() {
+  Blynk.run();
+  timer.run();
+  // You can inject your own code or combine it with other sketches.
+  // Check other examples on how to communicate with Blynk. Remember
+  // to avoid delay() function!
+}
+
 BLYNK_CONNECTED() {
 if (isFirstConnect) {
   Blynk.syncAll();
@@ -142,8 +184,8 @@ BLYNK_WRITE(V6) // ALL DAYS Schedule Selected
     weekend = 0;
     custom = 0;
     Blynk.syncVirtual(V10);
-    terminal.clear()
-    ;terminal.println("ALL DAYS SCHEDULE HAS BEEN ACTIVATIED AT:");
+    terminal.clear();
+    terminal.println("ALL DAYS SCHEDULE HAS BEEN ACTIVATIED AT:");
     currentTime();
     terminal.flush();
     currentDay();
@@ -898,7 +940,7 @@ BLYNK_WRITE(V17) // relay2 selected?
   }
 }
 void currentTime(){ // get current time
-  
+  terminal.flush();
   int timezoneoffset = -6;
   Time.zone(timezoneoffset);
   int minute = Time.minute();
@@ -997,36 +1039,4 @@ void terminalproperty(){
  float strength = sig.getStrength();
  String terminalLabel = String("WiFi Strength: ") + String(strength,0) + String("%");
  Blynk.setProperty(V5, "label", terminalLabel);
-}
-void setup() { // setup code runs once first
- // Debug console
-  Serial.begin(115200);
-  pinMode(relay1, OUTPUT);
-  pinMode(relay2, OUTPUT);
-  pinMode(relay3, OUTPUT);  
-  pinMode(relay4, OUTPUT);
-  delay(5000); // Allow board to settle
-  Blynk.begin(auth);
-  // Clear the terminal content
-  terminal.clear();
-  // This will print Blynk Software version to the Terminal Widget when
-  // your hardware gets connected to Blynk Server
-  terminal.println(F("WiFi Power Brick"));
-  terminal.println(F("Blynk v" BLYNK_VERSION ": Device has Booted"));
-  currentTime();
-  currentDay();
-  terminalproperty();
-  terminal.flush();
-  timer.setInterval(10000L, activetoday);  // check every 10 SECONDS if schedule should run today 
-  timer.setInterval(10000L, wifistrength); // get the wifi strength every 10 seconds
-  timer.setInterval(60000L, currentTime);
-  timer.setInterval(3600000L, currentDay);
-  timer.setInterval(10000L, terminalproperty); 
-}
-void loop() {
-  Blynk.run();
-  timer.run();
-  // You can inject your own code or combine it with other sketches.
-  // Check other examples on how to communicate with Blynk. Remember
-  // to avoid delay() function!
 }
